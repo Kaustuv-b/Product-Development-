@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+
+.card {
+    width: 20%;
+    height: auto;
+    margin: auto;
+    margin-top: 50px; /* Adjust as needed */
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+
+</style>
+
+<div class="card">
+    <div class="card-body">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <h5>Are you sure you want to delete "{{obj}}"? </h5>
+            <hr>
+            <input type="submit" class="btn btn-danger" value="Confirm">
+            <br>
+            <br>
+            <a href="{{ request.META.HTTP_REFERER }}">Go back</a>
+        </form>        
+    </div>
+</div>
+{% endblock content %}
+
+

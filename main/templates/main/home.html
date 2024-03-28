@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="container" style="margin-top: 50px;">
+
+
+    <div class="main-content">
+        <div>
+            <a href="#">
+                <button type="button" class="btn btn-primary">Watch Live Match</button>
+            </a>
+            <br>
+            <br>
+            <div class="embed-responsive embed-responsive-16by9" id="watch-live-link">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/r-c3BQJqf3o?controls=0&autoplay=1&mute=0&start=224" allowfullscreen allow="autoplay" width="800" height="450"></iframe>
+            </div>
+            <br>
+            <a href="{% url 'video-list' %}">
+                <button type="button" class="btn btn-secondary">Watch Previous Broadcasts</button>
+            </a>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div>
+            <h2>Upcoming Matches</h2>
+
+            <ul style="list-style-type: none; padding: 0;">
+                <li><strong>Football:</strong> Brazil vs Argentina</li>
+                <li><strong>Cricket:</strong> India vs Australia</li>
+                <li><strong>Tennis:</strong> USA vs Spain</li>
+                <li><strong>Basketball:</strong> USA vs China</li>
+                <li><strong>Rugby:</strong> New Zealand vs England</li>
+            </ul>
+
+            <a href="#">View All Matches</a>
+        </div>
+        <hr>
+    </div>
+</div>
+
+
+{% endblock %}

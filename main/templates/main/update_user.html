@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section class="update-profile-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-10"> <!-- Increased the column width to 10 -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Update Profile</h2>
+          </div>
+          <div class="card-body">
+            <form class="update-profile-form" action="" method="POST">
+              {% csrf_token %}
+              {% for field in form %}
+                <div class="form-group">
+                  <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                  {{ field }}
+                </div>
+              {% endfor %}
+              <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,289 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+
+<style>
+    /* Custom Styles for Video Player and Comments */
+    .video-player-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-top: 50px;
+    }
+
+    .video-container {
+        width: 70%;
+    }
+
+    .video-container .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+
+    .video-container .card-body {
+        padding: 20px;
+    }
+
+    .video-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .video-details {
+        margin-top: 20px;
+    }
+
+    .video-detail {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 10px;
+    }
+
+    .video-details iframe {
+        width: 100%;
+        height: 550px;
+        border: none;
+    }
+
+
+    /* CSS for Video Comments Section */
+.video-comments {
+    margin-top: 20px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.comment-section {
+    margin-bottom: 20px;
+}
+
+.comment {
+    margin-bottom: 15px;
+}
+
+.comment small {
+    color: #777;
+}
+
+.comment p {
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.comment a {
+    color: #cc0000;
+    text-decoration: none;
+}
+
+.comment a:hover {
+    text-decoration: underline;
+}
+
+.comment-form input[type="text"] {
+    width: calc(100% - 80px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.comment-form input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+</style>
+
+
+{% block content %}
+<div class="video-player-container">
+    <div class="video-container">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="video-title">{{ video.title }}</h3><br>
+                  <div class="embed-responsive embed-responsive-16by9" id="watch-live-link">
+                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ video.embed.embed_code }}?controls=0&autoplay=1&mute=1&start=224" allowfullscreen allow="autoplay" width="800" height="450"></iframe>
+                 </div>
+            </div>
+        </div>
+        <!-- <div class="card">
+            <div class="card-body video-details">
+                <p class="video-detail"><strong>Detail:</strong><br>{{ video.detail }}</p>
+                <p class="video-detail"><strong>Uploaded:</strong> {{ video.created|timesince }}</p>
+            </div>
+        </div> -->
+    </div>
+<!-- 
+    <div class="video-comments">
+        <div class="card">
+            <div class="card-body comment-section">
+                <h2>Comments</h2>
+                <hr>
+                <div class="comment">
+                    {% for comment in comments %}
+                    <div>
+                        <small>@{{comment.user}} {{comment.created|timesince}} ago </small>
+                        {% if user.is_superuser %}
+                        <a href="{% url 'delete-comment' comment.id %}">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 32 32">
+                                <title>remove</title>
+                                <path
+                                d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z"
+                                ></path>
+                            </svg>
+                        </a>
+                        {% endif %}
+                        <p>{{comment.body}}</p>
+                        <hr>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if request.user.is_authenticated %}
+                <div class="comment-form">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="body" placeholder="Comment....">
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div> -->
+
+</div>
+
+
+
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .video-comments {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .comment-section h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .comment {
+      margin-bottom: 20px;
+    }
+
+    .comment small {
+      color: #777;
+    }
+
+    .comment p {
+      margin: 5px 0;
+    }
+
+    .comment hr {
+      border: 0.5px solid #ddd;
+    }
+
+    .comment-form input[type="text"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    .comment-form input[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .comment-form input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="video-comments">
+  <div class="card">
+    <div class="card-body comment-section">
+      <h2>Comments</h2>
+      <hr>
+      
+      {% for comment in comments %}
+      <div class="comment">
+        <small>@{{ comment.user }} {{ comment.created|timesince }} ago</small>
+        {% if user.is_superuser %}
+        <a href="{% url 'delete-comment' comment.id %}">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 32 32">
+            <title>remove</title>
+            <path d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z"></path>
+          </svg>
+        </a>
+        {% endif %}
+        <p>{{ comment.body }}</p>
+        <hr>
+      </div>
+      {% endfor %}
+      
+      {% if request.user.is_authenticated %}
+      <div class="comment-form">
+        <form action="" method="POST">
+          {% csrf_token %}
+          <input type="text" name="body" placeholder="Comment....">
+          <input type="submit" value="Submit">
+        </form>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+

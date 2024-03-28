@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: bkaustuv7@gmail.com
+Date: Fri, 22 Mar 2024 16:22:12 -0000
+Message-ID: <171112453210.14148.13933305433743503592@Kaustuv>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/NQ/c4b9g0-6e57a808f6d4f917cc5651472ea10458/
+
+Your username, in case you’ve forgotten: ERROR
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
